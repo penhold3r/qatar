@@ -1,0 +1,7 @@
+$main-color: rgb(98, 87, 86);
+$secondary-color: rgb(197, 175, 150);
+$accent-color: rgb(119, 28, 126);
+$black: darken(desaturate($accent-color, 55%), 20%);
+$grey-25: lighten($black, 15);
+$grey-50: lighten($black, 40);
+$grey-75: lighten($black, 65);

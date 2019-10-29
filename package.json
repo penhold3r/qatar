@@ -1,0 +1,43 @@
+{
+	"name": "qatar",
+	"version": "1.0.0",
+	"description": "qatar",
+	"author": "penHolder Designer <penhold3r@gmail.com>",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/penhold3r/qatar.git"
+	},
+	"bugs": {
+		"url": "https://github.com/penhold3r/qatar/issues"
+	},
+	"homepage": "https://github.com/penhold3r/qatar#readme",
+	"license": "MIT",
+	"browserslist": [
+		"> 2%"
+	],
+	"scripts": {
+		"start": "webpack -wd",
+		"prod": "webpack -p"
+	},
+	"devDependencies": {
+		"autoprefixer": "^8.6.5",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^7.1.5",
+		"babel-polyfill": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"css-loader": "^2.1.1",
+		"file-loader": "^1.1.11",
+		"imagesloaded": "^4.1.4",
+		"mini-css-extract-plugin": "^0.4.5",
+		"node-libs-browser": "^2.2.0",
+		"node-sass": "^4.12.0",
+		"node-sass-glob-importer": "^5.3.1",
+		"postcss-loader": "^2.1.6",
+		"sanitize.css": "^5.0.0",
+		"sass-loader": "^7.1.0",
+		"url-loader": "^1.1.2",
+		"webpack": "^4.41.2",
+		"webpack-cli": "^3.3.9",
+		"whatwg-fetch": "^2.0.4"
+	}
+}
