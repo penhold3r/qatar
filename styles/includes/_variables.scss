@@ -1,7 +1,17 @@
-$main-color: rgb(98, 87, 86);
-$secondary-color: rgb(197, 175, 150);
-$accent-color: rgb(119, 28, 126);
-$black: darken(desaturate($accent-color, 55%), 20%);
-$grey-25: lighten($black, 15);
-$grey-50: lighten($black, 40);
-$grey-75: lighten($black, 65);
+$primary-color: #e2e469;
+$secondary-color: #afaf52;
+
+$grey: #3f3f3b;
+$light: #c2c799;
+$black: #1d1d1b;
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,700,700i&display=swap');
+$main-font: 'Open Sans', 'Roboto', 'Helvetica', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:700,700i&display=swap');
+$display: 'Playfair Display', Georgia, serif;
+
+$max-width: 1300px;
+
+$w1-3: calc(100% / 3);
+$w2-3: calc((100% / 3) * 2);

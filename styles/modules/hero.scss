@@ -1,0 +1,121 @@
+.hero-landing {
+	position: relative;
+	height: 100vh;
+	min-height: 600px;
+
+	.video-landing {
+		background: $black;
+		height: 70%;
+		min-height: 550px;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+
+		&:before {
+			background: rgba($black, 0.5);
+			box-shadow: inset 0 0 150px 120px rgba($black, 0.7);
+			content: '';
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+		}
+
+		video {
+			height: auto;
+			left: 50%;
+			min-height: 100%;
+			min-width: 100%;
+			overflow: hidden;
+			position: absolute;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			width: auto;
+			z-index: 0;
+		}
+	}
+
+	.featured {
+		background: $primary-color;
+		bottom: 2rem;
+		height: 300px;
+		left: 0;
+		margin: 0 auto;
+		max-width: 800px;
+		position: absolute;
+		right: 0;
+		width: 90%;
+		z-index: 10;
+
+		.featured-card {
+			display: flex;
+			height: 100%;
+
+			.feat-img {
+				background: $light;
+				height: 100%;
+				padding: 2rem;
+				width: 30%;
+
+				img {
+					height: 100%;
+					object-fit: contain;
+					position: relative;
+					width: 100%;
+				}
+			}
+
+			.featured-summary {
+				display: flex;
+				flex-direction: column;
+				padding: 2rem;
+				width: 100%;
+
+				.tag {
+					border: 1px solid $secondary-color;
+					color: rgba($grey, 0.75);
+					font-size: 0.8rem;
+					margin: 0 auto auto 0;
+					padding: 0.25rem 0.5rem;
+					text-transform: uppercase;
+				}
+
+				.product-name {
+					font-family: $display;
+					font-size: 3rem;
+					margin: 0 0 1rem;
+				}
+
+				.price {
+					display: inline-flex;
+					border: 1px solid $grey;
+					padding: 0.25rem 1rem;
+					position: relative;
+					font-size: 2rem;
+					width: fit-content;
+
+					.qty {
+						background: $primary-color;
+						bottom: 0;
+						font-size: 1rem;
+						font-weight: bold;
+						height: fit-content;
+						left: calc(100% - 11px);
+						margin: auto 0;
+						padding: 0 0.5rem 0.2rem;
+						position: absolute;
+						top: 0;
+						white-space: nowrap;
+					}
+				}
+
+				.featured-link {
+					border-color: $grey;
+					margin: auto 0 0 auto;
+				}
+			}
+		}
+	}
+}

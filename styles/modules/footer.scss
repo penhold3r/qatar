@@ -1,0 +1,86 @@
+.site-footer {
+	background: $grey;
+	padding: 2rem 1rem;
+
+	.subscription {
+		display: flex;
+		justify-content: center;
+		margin: 0 0 2rem;
+
+		.subscription-title {
+			margin: 0 1rem 0 0;
+			color: $light;
+			font-family: $display;
+			font-style: italic;
+			font-weight: bold;
+			font-size: 1.5rem;
+		} /* .subscription-title */
+
+		.input {
+			border: none;
+			border-bottom: 1px solid $light;
+			border-left: 1px solid $light;
+			padding: 0.25rem 0.5rem;
+
+			@include placeholder {
+				font-family: $display;
+				font-style: italic;
+				color: $light;
+				transition: all 0.3s;
+			}
+
+			&:focus {
+				@include placeholder {
+					opacity: 0;
+					padding: 0 0 0 1rem;
+				}
+			}
+		} /* .input */
+
+		.submit {
+			margin: 0 0 0 1rem;
+			color: $light;
+			font-family: $display;
+			font-style: italic;
+			font-weight: bold;
+			padding: 0.25rem 1rem;
+			text-transform: lowercase;
+
+			&:hover {
+				color: $grey;
+			}
+		} /* .submit */
+	} /* .subscription */
+
+	.footer-nav {
+		margin: 0 0 2rem;
+
+		.nav-list {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			justify-content: center;
+
+			.menu-item {
+				padding: 0.5rem;
+
+				a {
+					color: $light;
+				}
+			} /* .menu-item */
+		} /* .nav-list*/
+	} /* .footer-nav */
+
+	.copy {
+		border-top: 1px solid $secondary-color;
+
+		p {
+			margin: 0;
+			padding: 1rem;
+			color: $light;
+			text-align: center;
+			letter-spacing: 0.05rem;
+		}
+	}
+}

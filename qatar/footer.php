@@ -14,18 +14,33 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'qatar' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'qatar' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'qatar' ), 'qatar', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
+
+      <form action="" class="subscription">
+         <div class="subscription-title">Suscribirme</div>
+         <input class="input" type="text" name="name" placeholder="Nombre">
+         <input class="input" type="email" name="email" placeholder="E-mail">
+         <input class="button submit" type="submit" value="ok">
+      </form>
+      
+      <?php
+         wp_nav_menu( 
+            array( 
+               'theme_location'	=> 'footer-menu', 
+               'menu'            => 'Footer Menu',
+               'container'       => 'nav',
+               'container_class' => 'footer-nav',
+               'container_id'    => '',
+               'menu_class'      => 'nav-list',
+               'menu_id'         => '',
+               'items_wrap'      => '<ul class="%2$s">%3$s</ul>'
+            ) 
+         ); 
+      ?>
+      
+		<div class="copy">
+			<p>
+            <small>Qatar &copy; <?php echo date("Y"); ?></small>
+         </p>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

@@ -1,0 +1,44 @@
+.cta {
+	display: flex;
+	padding: 6rem 1rem;
+
+	.cta-text {
+		margin: auto;
+		text-align: center;
+		position: relative;
+		padding: 2rem 0 0;
+		width: 450px;
+
+		&:before {
+			border: 1px solid $primary-color;
+			content: '';
+			height: 250px;
+			left: 0;
+			position: absolute;
+			font-size: 2.5rem;
+			top: 0;
+			right: 0;
+			margin: 0 auto;
+			width: 250px;
+			z-index: -1;
+		}
+
+		p {
+			font-size: 2rem;
+			text-align: center;
+			text-transform: uppercase;
+			letter-spacing: 0.05rem;
+			margin: 0;
+
+			strong {
+				font-family: $display;
+				text-transform: initial;
+				font-size: 2.75rem;
+			}
+		}
+
+		a.button {
+			margin: 2rem 0 0;
+		}
+	}
+}

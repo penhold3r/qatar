@@ -71,42 +71,79 @@ add_action('init', 'categories_to_pages');
  *--------------------------------------------
  * Display featured image
  */
-function feat_img($type_img = 'full', $blur = true, array $classes = array(), $img_id = 0)
+function feat_img(array $custom = array())
 {
-	global $post;
-	$classes = count($classes) === 0 ? 'feat-img' : implode(" ", $classes) . ' feat-img';
-	$img_id  = $img_id !== 0 ? $img_id : $post->ID;
+   global $post;
    
-	echo '<div class="' . $classes . '">';
+   $defaults = array(
+		'type' => 'full',
+		'blur' => true,
+		'classes' => array(),
+		'id' => 0,
+      'data' => array()
+	);
+
+	$options = array_merge($defaults, $custom);
+   
+   $classes = count($options['classes']) === 0 
+      ? 'feat-img' 
+      : implode(" ", $options['classes']) . ' feat-img';
+      
+   $data_attr = ''; 
+   if(count($options['data']) !== 0){
+      foreach($options['data'] as $data => $val){
+         $data_attr .= 'data-'. $data .'="'. $val .'" ';      
+      }
+   } 
+   
+   $img_id  = $options['id'] !== 0 ? $options['id'] : $post->ID;
+   
 	if (has_post_thumbnail($image_id)) {
-		if ($blur) {
+      echo '<div class="'. $classes .'" '. $data_attr .'>';
+
+		if ($options['blur']) {
 			echo '<div class="bg-placeholder-img" style="background-image: url(' . get_the_post_thumbnail_url($image_id, 'thumbnail') . ')"></div>';
 		}
 	  
-		the_post_thumbnail($type_img, array(
+		the_post_thumbnail($options['type'], array(
 			'class' => 'feat-img-file'
 		));
+      
+      echo '</div><!-- .feat-img -->';
 	}
-	echo '</div><!-- .feat-img -->';
 }
 
-function blog_feat_img($type_img = 'full', $blur = true, array $classes = array(), $max_width = '1300px')
+function blog_feat_img(array $custom = array())
 {
-	global $post;
-	$classes = count($classes) === 0 ? 'feat-img' : implode(" ", $classes) . ' feat-img';
+   global $post;
+
+   $defaults = array(
+		'type' => 'full',
+		'blur' => true,
+		'classes' => array(),
+      'id' => 0,
+      'max_width' => '1300px'
+	);
+
+   $options = array_merge($defaults, $custom);
+   
+	$classes = count($options['classes']) === 0 
+      ? 'feat-img' 
+      : implode(" ", $options['classes']) . ' feat-img';
+
 	$blog = get_option('page_for_posts');
    
 	echo '<div class="' . $classes . '">';
 	if (is_home() && $blog) {
-		$image = wp_get_attachment_image_src(get_post_thumbnail_id($blog), $type_img);
+		$image = wp_get_attachment_image_src(get_post_thumbnail_id($blog), $options['type']);
 		$image_small = wp_get_attachment_image_src(get_post_thumbnail_id($blog), 'thumbnail');
-		$image_srcset = wp_get_attachment_image_srcset(get_post_thumbnail_id($blog), $type_img);
+		$image_srcset = wp_get_attachment_image_srcset(get_post_thumbnail_id($blog), $options['type']);
 
-		if ($blur) {
+		if ($options['blur']) {
 			echo '<div class="bg-placeholder-img" style="background-image: url(' . $image_small[0] . ')"></div>';
 		}
 	  
-		echo '<img class="acf-img-file" src="' . $image[0] . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . ') 100vw, ' . $max_width . '" alt="">';
+		echo '<img class="acf-img-file" src="' . $image[0] . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $options['max_width'] . ') 100vw, ' . $options['max_width'] . '" alt="">';
 	}
 	echo '</div><!-- .feat-img -->';
 }
@@ -129,23 +166,44 @@ function category_feat_img($type_img = 'full', $blur = true)
 	echo '</div><!-- .feat-img -->';
 }
 
-function acf_image($field, $image_size, $blur = true, array $classes = array(), $max_width = '1300px')
+function acf_image($field, array $custom = array())
 {
-	global $post;
+   global $post;
    
-	$image_id = get_field($field, $post->ID);
+   $defaults = array(
+		'type' => 'full',
+		'blur' => true,
+		'classes' => array(),
+      'max_width' => '1300px',
+      'data' => array()
+	);
+
+   $options = array_merge($defaults, $custom);
    
+	$image_id = get_field($field, $post->ID);  
   
 	if ($image_id) {
-		$image_src = wp_get_attachment_image_url($image_id, $image_size);
-		$image_srcset = wp_get_attachment_image_srcset($image_id, $image_size);
+		$image_src = wp_get_attachment_image_url($image_id, $options['type']);
+		$image_srcset = wp_get_attachment_image_srcset($image_id, $options['type']);
 	  
-		$classes  = count($classes) === 0 ? 'acf-image' : implode(" ", $classes) . ' acf-image';
-		$image_template = '<div class="' . $classes . '">';
-		if ($blur) {
+      $classes  = count($options['classes']) === 0 
+         ? 'acf-image' : 
+         implode(" ", $options['classes']) . ' acf-image';
+      
+      $data_attr = ''; 
+      if(count($options['data']) !== 0){
+         foreach($options['data'] as $data => $val){
+            $data_attr .= 'data-'. $data .'="'. $val .'" ';      
+         }
+      }  
+
+      $image_template = '<div class="'. $classes .'" '. $data_attr .'>';
+      
+      if ($options['blur']) {
 			$image_template .= '<div class="bg-placeholder-img" style="background-image: url(' . wp_get_attachment_image_url($image_id, 'thumbnail') . ')"></div>';
-		}
-		$image_template .= '<img class="acf-img-file" src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $max_width . ') 100vw, ' . $max_width . '" alt="">';
+      }
+      
+		$image_template .= '<img class="acf-img-file" src="' . $image_src . '" srcset="' . $image_srcset . '" sizes="(max-width: ' . $options['max_width'] . ') 100vw, ' . $options['max_width'] . '" alt="">';
 
 		$image_template .= '</div><!-- .acf-image -->';
 	  
@@ -481,7 +539,10 @@ function build_form(array $f_options = array())
 
    return $form;
 } 
-
+//--------------------------------------------------------------
+/**
+ * Link to go back in browsser history
+ */
 
 function go_back_link( $content, array $classes=array()) 
 {
@@ -565,104 +626,3 @@ function create_custom_post_type(array $args = array())
 	register_post_type($custom_post_type_name, $args);
 }
 
-
-
-
-function ph_create_custom_meta_box(array $custom = array()){
-	
-	$defaults = array(
-		'id' => ($id = 'meta_box'),
-		'name' => 'Meta Box',
-		'callback' => 'ph_inner_meta_box',
-		'screen' => 'post',
-		'args' => array(
-				'key' => '_meta_box_key'
-			)
-	);
-
-	$options = array_merge($defaults, $custom);
-
-	add_action( 'add_meta_boxes', function() use ( $options ) { 
-		add_meta_box(
-			$options['id'],
-			__( $options['name'], get_theme_text_domain() ),
-			$options['callback'],
-			$options['screen'],
-			'normal',
-			'default',
-			$options['args']
-		);
-	});
-
-	$args = array(
-		'meta'	=> $options['id'],
-		'key' => $options['args']['key']
-	);
-
-	
-	/* Do something with the data entered */
-	add_action( 'save_post', function() use ( $post_id, $args ) {
-
-		global $post;
-		// verify if this is an auto save routine. 
-		// If it is our form has not been submitted, so we dont want to do anything
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-
-		$data = $_POST[$args['meta']];
-
-		// if(!empty($_FILES[$args['meta']]['name'])) {
-         
-		// 	// Setup the array of supported file types. In this case, it's just PDF.
-		// 	$supported_types = array('application/pdf');
-			 
-		// 	// Get the file type of the upload
-		// 	$arr_file_type = wp_check_filetype(basename($_FILES[$args['meta']]['name']));
-		// 	$uploaded_type = $arr_file_type['type'];
-			 
-		// 	// Check if the type is supported. If not, throw an error.
-		// 	if(in_array($uploaded_type, $supported_types)) {
-  
-		// 		// Use the WordPress API to upload the file
-		// 		$upload = wp_upload_bits($_FILES[$args['meta']]['name'], null, file_get_contents($_FILES[$args['meta']]['tmp_name']));
-	
-		// 		if(isset($upload['error']) && $upload['error'] != 0) {
-		// 			wp_die('There was an error uploading your file. The error is: ' . $upload['error']);
-		// 		} else {
-		// 			$data = array_merge($upload, $data);
-		// 			add_post_meta($id, $args['key'], $upload);
-		// 			update_post_meta($id, $args['key'], $upload);     
-		// 		} // end if/else
-  
-		// 	} else {
-		// 		 wp_die("The file type that you've uploaded is not a PDF.");
-		// 	} // end if/else
-			 
-		//   } // end if
-		  
-		for ($i = 1; $i <= count($data); $i++) {
-			if( $data[$i]['file'] ){
-				$upload = wp_upload_bits($data[$i]['file'], null, file_get_contents($data[$i]['file']));
-				$data[$i]['attachment'] = $upload;
-			}
-		}
-		
-		update_post_meta( $post->ID, $args['key'], $data);
-
-  });
-	
-}
-
-/* Prints the box content */
-function ph_inner_meta_box($post, $args) {
-	$value = get_post_meta($post->ID, $args['args']['key'], true);
-
-	?>
-		<label for="mb_field">Dato: (<?php echo $args['args']['key'] ?>)</label>
-		<input 
-			type="text" 
-			name="<?php echo $args['id'] ?>" 
-			id="mb_field" 
-			value="<?php echo $value ?>"
-		/>
-	<?php
-}

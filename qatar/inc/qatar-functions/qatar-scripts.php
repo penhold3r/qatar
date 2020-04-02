@@ -13,7 +13,8 @@ function qatar_styles_and_scripts()
    // scripts
    wp_enqueue_script(
       'gmap', 
-      'https://maps-api-ssl.google.com/maps/api/js?key=AIzaSyBZLEliDhUUlSxi5yjNAB8F9-lDYVVAoYM');
+      'https://maps-api-ssl.google.com/maps/api/js?key=AIzaSyBZLEliDhUUlSxi5yjNAB8F9-lDYVVAoYM'
+   );
    
    wp_register_script(
       'Qatar_Script', 
