@@ -7,6 +7,17 @@
  * @package Qatar
  */
 
+$args = array(
+   'post_type' => 'product',
+   'posts_per_page' => -1,
+   'meta_query' => array(
+      array(
+         'key' => 'featured',
+         'value' => true,
+     ),
+   )
+);
+
 ?>
 
 <section class="hero-landing">
@@ -17,38 +28,26 @@
       </video>
    </div>
 
-   <div class="featured">
    <?php
-   // $featured = get_field('featured');
-   
-   // $meta_query = array('relation' => 'OR');
-   // foreach( $featured as $item ){
-   //    $meta_query[] = array(
-   //       'key'     => 'checkbox',
-   //       'value'   => $item,
-   //       'compare' => 'LIKE',
-   //    );
-   // }
-
-   $args = array(
-      'post_type' => 'product',
-      'posts_per_page' => -1,
-      'meta_query' => array(
-         array(
-            'key' => 'featured',
-            'value' => true,
-        ),
-      )
-   );
-
    $loop = new WP_Query( $args );
 
    if ( $loop->have_posts() ) :
+   
+   ?>
+   <div class="featured">
+      <div class="featured-wrapper">
+      
+      <?php 
+   
+      $card_index = 0;
       while ( $loop->have_posts() ) : 
          $loop->the_post();
          global $product;
       ?>
-         <div class="featured-card">
+         <div 
+            data-index="<?php echo $card_index ?>" 
+            class="featured-card <?php echo $card_index === 0 ? 'active' : '' ?>"
+         >
             
             <?php feat_img(array('id' => $product->get_id(), 'blur' => false)); ?>
 
@@ -64,22 +63,22 @@
                   <small class="qty">&times; caja</small>
                </div>
 
-               <a href="<?php echo get_permalink( $product->get_id() ) ?>" class="featured-link button">
+               <a href="<?php echo get_permalink( $product->get_id() ) ?>" class="featured-link button button-icon icon-arrow-right">
                   <span>Comprar</span>
-                  <ion-icon class="icon" name="arrow-forward"></ion-icon>
+                  <i class="icon fal fa-arrow-right"></i>
                </a>
             </div>
          </div>
          
-      <?php
-      endwhile;
-   else :
-      echo __( 'No products found' );
+      <?php $card_index++; endwhile; ?>
+      </div><!-- .featured-wrapper -->
+   </div><!-- .featured -->
+   <?php
+   
    endif;
 
    wp_reset_postdata();
-?>
-   </div>
+   ?>
 
 </section><!-- .hero-landing -->
 
@@ -121,9 +120,9 @@
       <?php the_field('cta_text') ?>
 
       <?php if( get_field('cta_button') ): ?>
-      <a href="/tienda" class="button">
+      <a href="/tienda" class="button button-icon icon-arrow-right">
          <span><?php the_field('cta_button') ?></span>
-         <ion-icon class="icon" name="arrow-forward"></ion-icon>
+         <i class="icon fal fa-arrow-right"></i>
       </a>
       <?php endif ?>
 

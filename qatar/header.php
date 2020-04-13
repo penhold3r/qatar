@@ -18,7 +18,8 @@ $nav_config = array(
    'container_id'    => 'main-nav',
    'menu_class'      => 'nav-list',
    'menu_id'         => '',
-   'items_wrap'      => '<ul class="%2$s">%3$s</ul>'
+   'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
+   "walker"          => new Qatar_Walker()
 );
 
 ?>
@@ -27,15 +28,18 @@ $nav_config = array(
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="theme" content="#ff0000">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+	<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32 192x192 256x256 512x512" />
 
    <?php wp_head(); ?>
    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
-   <script nomodule="" src="https://xunpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
+   <!-- <script nomodule="" src="https://xunpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>  -->
+   
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site fader">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'qatar' ); ?></a>
 
 	<header id="masthead" class="site-header">
@@ -61,7 +65,7 @@ $nav_config = array(
          <div class="cart">
 					
             <a class="cart-link" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'ver carrito' ); ?>">
-               <ion-icon name="cart" class="icon"></ion-icon>
+               <i class="icon fas fa-shopping-cart"></i>
                
                <div class="cart-details">
                   <div class="items">
@@ -84,4 +88,4 @@ $nav_config = array(
 		
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content">
+	<main id="content" class="site-content fader">

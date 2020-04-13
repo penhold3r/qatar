@@ -17,7 +17,17 @@
 
 defined( 'ABSPATH' ) || exit;
 
-do_action( 'woocommerce_before_cart' ); ?>
+feat_img(
+   array(
+      'id' => get_option( 'woocommerce_cart_page_id' ), 
+      'blur' => false,
+      'classes' => array('')
+   )
+);
+
+do_action( 'woocommerce_before_cart' ); 
+
+?>
 
 <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 	<?php do_action( 'woocommerce_before_cart_table' ); ?>

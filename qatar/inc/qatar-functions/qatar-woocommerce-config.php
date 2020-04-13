@@ -27,7 +27,8 @@ function qatar_store_feat_img(array $custom = array())
 		'type' => 'full',
 		'blur' => true,
 		'classes' => array(),
-      'max_width' => '1300px'
+      'max_width' => '1300px',
+      'data' => array()
 	);
 
    $options = array_merge($defaults, $custom);
@@ -117,3 +118,14 @@ function qatar_cart_count_fragments( $fragments ) {
     
    return $fragments; 
 }
+
+
+function qatar_cart_totals_coupon_html( $value ) {
+
+   $value = str_replace('[Eliminar]', 'Eliminar', $value);
+
+   return $value;
+
+}
+
+add_filter( 'woocommerce_cart_totals_coupon_html', 'qatar_cart_totals_coupon_html', 10, 1 );

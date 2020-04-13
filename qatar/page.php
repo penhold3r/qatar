@@ -13,31 +13,30 @@
  */
 
 get_header();
-?>
 
-   <main id="main" class="site-main page">
-   <?php
-   if(is_cart()) :
-      echo do_shortcode( '[woocommerce_cart]' );
-   
-   else:
-      while ( have_posts() ) :
-         the_post();
+if(is_cart()) :
+   echo do_shortcode( '[woocommerce_cart]' );
 
-         if(is_front_page()):
-            get_template_part('template-parts/content', 'home');
+elseif(is_checkout()) :
+   echo do_shortcode( '[woocommerce_checkout]' );
+
+else:
+   while ( have_posts() ) :
+      the_post();
+
+      if(is_front_page()):
+         get_template_part('template-parts/content', 'home');
+      
+      elseif($post->post_name === 'preguntas-frecuentes' ):
+         get_template_part('template-parts/content', 'faq');
+      
+      else:
+         get_template_part( 'template-parts/content', 'page' );
          
-         else:
-            get_template_part( 'template-parts/content', 'page' );
-            
-         endif;
+      endif;
 
-      endwhile; // End of the loop.
-   endif;
-   ?>
-
-   </main><!-- #main -->
-
-<?php
+   endwhile; // End of the loop.
+endif;
+  
 get_footer();
 

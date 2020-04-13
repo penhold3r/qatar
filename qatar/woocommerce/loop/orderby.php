@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       <option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>><?php echo esc_html( $name ); ?></option>
       <?php endforeach; ?>
    </select>
-   <div class="arrow">&#x25BE;</div>
+   <i class="icon fal fa-sort-amount-down"></i>
 	<input type="hidden" name="paged" value="1" />
 	<?php wc_query_string_form_fields( null, array( 'orderby', 'submit', 'paged', 'product-page' ) ); ?>
 </form>

@@ -1,0 +1,40 @@
+.faq-page {
+	background: $light;
+	padding: 5rem 1rem 3rem;
+
+	&__header {
+		padding: 2rem 0;
+
+		&__title {
+			color: #fff;
+			font-family: $display;
+			font-size: 2.5rem;
+			margin: 0;
+			text-align: center;
+		}
+	}
+
+	&__content {
+		border: 1px solid $primary-color;
+		background: #fff;
+		padding: 2rem;
+		max-width: 800px;
+		margin: 0 auto;
+
+		h2,
+		h3 {
+			color: $secondary-color;
+			margin: 0 0 1rem;
+		}
+
+		p {
+			margin: 0 0 1rem;
+		}
+
+		ul,
+		ol {
+			margin: 0 0 1rem;
+			padding: 0 0 0 1.5rem;
+		}
+	}
+}

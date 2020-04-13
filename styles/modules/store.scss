@@ -1,5 +1,5 @@
 .store-page {
-	position: relative;
+	//position: relative;
 
 	.store-header {
 		background: $black;
@@ -54,6 +54,10 @@
 		max-width: $max-width;
 		padding: 1rem;
 
+		.woocommerce-notices-wrapper {
+			display: none;
+		}
+
 		.woocommerce-ordering {
 			margin: 0 0 0 auto;
 			position: relative;
@@ -63,32 +67,25 @@
 				padding: 0.25rem 1.75rem 0.25rem 1rem;
 				font-family: $main-font;
 
-				&:after {
-					content: 'd';
-				}
-
 				option {
 					background: rgba($light, 0.5);
-
-					&:hover {
-						background: red;
-					}
 				}
 			}
 
-			.arrow {
+			.icon {
 				bottom: 0;
+				height: 100%;
 				color: $primary-color;
 				font-size: 1.5rem;
 				pointer-events: none;
 				position: absolute;
-				right: 0.25rem;
+				right: 0.5rem;
 				top: 0;
 			}
 		}
 
 		.products-wrapper {
-			margin: 2rem 0;
+			margin: 1rem 0 2rem;
 			position: relative;
 
 			&:after {
@@ -114,14 +111,13 @@
 				}
 
 				.product-card {
-					//border-bottom: 1px solid $light;
-					//border-right: 1px solid $light;
 					background: #fff;
 					padding: 1.5rem;
 
 					.product-inner-card {
 						display: flex;
 						flex-direction: column;
+						height: 100%;
 						padding: 1rem 0;
 						position: relative;
 
@@ -158,6 +154,7 @@
 
 						.product-name {
 							color: $grey;
+							flex-grow: 1;
 							font-family: $display;
 							font-size: 1.5rem;
 							text-align: center;
@@ -165,16 +162,25 @@
 						}
 
 						.price {
+							display: flex;
+							justify-content: center;
+							align-items: center;
 							border: 1px solid $light;
 							font-size: 1.5rem;
 							margin: 0 1.5rem;
 							padding: 0.5rem 1rem 1.75rem;
 							text-align: center;
+
+							.icon {
+								color: $light-grey;
+								font-size: 1rem;
+								margin: 0 0 0 0.5rem;
+							}
 						}
 
 						.product-link {
 							background: #fff;
-							margin: -18px auto auto;
+							margin: -1rem auto auto;
 
 							&:hover {
 								background: $primary-color;

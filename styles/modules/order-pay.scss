@@ -1,0 +1,46 @@
+body.woocommerce-order-pay {
+	.woocommerce {
+		ul.order_details {
+			//background: rgba($grey-25, 0.2);
+			list-style: none;
+			max-width: 600px;
+			margin: 0 auto 1rem;
+			padding: 1rem;
+
+			li {
+				color: $primary-color;
+
+				margin: 0 0 0.5rem;
+			}
+		}
+
+		img {
+			display: block;
+			margin: 0 auto 1rem;
+			max-width: 600px;
+			width: 100%;
+			height: auto;
+		}
+
+		p {
+			margin: 0 auto 1rem;
+			max-width: 600px;
+			text-align: center;
+		}
+
+		.button {
+			margin: 0 auto 1rem auto;
+
+			&[name='MP-Checkout'] {
+				background: $primary-color;
+				color: #fff;
+			}
+
+			&.cancel {
+				background: #fff;
+				border: 1px solid $primary-color;
+				color: $primary-color;
+			}
+		}
+	}
+}

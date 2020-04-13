@@ -1,4 +1,5 @@
-//
+@import '~sanitize.css/sanitize.css';
+@import '~aos/dist/aos.css';
 @import './includes/*.scss';
 /******************************************************
 *                    SOME FIXES
@@ -35,6 +36,10 @@ body {
 	line-height: 1.5;
 	margin: 0 auto;
 
+	main#content {
+		min-height: calc(100vh - 28rem);
+	}
+
 	h3,
 	h4,
 	h5,
@@ -43,7 +48,7 @@ body {
 	}
 
 	p {
-		margin: 0 0 1em;
+		margin: 0 0 1rem;
 		text-align: justify;
 
 		img {
@@ -58,30 +63,79 @@ body {
 		font-weight: 600;
 	}
 
+	input,
+	textarea,
+	select {
+		border-radius: 0;
+		font-family: $main-font;
+		font-size: 1rem;
+	}
+
+	.icon {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	.button {
 		align-items: center;
-		border: 1px solid $primary-color;
+		border-radius: 0;
+		border: 1px solid $grey;
 		color: $grey;
 		cursor: pointer;
 		display: inline-flex;
+		font-family: $main-font;
+		font-size: 1rem;
 		justify-items: center;
-		padding: 0.25rem 0 0.25rem 1rem;
+		padding: 0.25rem 1rem;
 		text-decoration: none;
 		text-transform: uppercase;
 		transition: all 0.3s;
 		user-select: none;
 
-		.icon {
-			margin: auto 1rem auto 0.5rem;
-			transition: all 0.3s;
+		&:hover {
+			background: $secondary-color;
+			color: #fff;
 		}
 
-		&:hover {
-			background: $primary-color;
-			//padding: 0.25rem 0.75rem 0.25rem 1rem;
+		&.button-primary {
+			border: 1px solid $primary-color;
+
+			&:hover {
+				background: $primary-color;
+			}
+		}
+
+		&.button-secondary {
+			border: 1px solid $secondary-color;
+
+			&:hover {
+				background: $secondary-color;
+			}
+		}
+
+		&.button-sm {
+			font-size: 0.9rem;
 
 			.icon {
-				margin: auto 0.5rem auto 1rem;
+				font-size: 1rem;
+			}
+		}
+
+		&.button-icon {
+			padding: 0.25rem 0 0.25rem 1rem;
+
+			.icon {
+				margin: auto 1rem auto 0.5rem;
+				transition: all 0.3s;
+			}
+
+			&.icon-arrow-right {
+				&:hover {
+					.icon {
+						margin: auto 0.5rem auto 1rem;
+					}
+				}
 			}
 		}
 	}

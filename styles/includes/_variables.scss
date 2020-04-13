@@ -2,8 +2,37 @@ $primary-color: #e2e469;
 $secondary-color: #afaf52;
 
 $grey: #3f3f3b;
+$light-grey: lighten(#3f3f3b, 50);
 $light: #c2c799;
 $black: #1d1d1b;
+
+/*
+      www.OnlineWebFonts.Com 
+      You must credit the author Copy this link on your web 
+      <div>Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>is licensed by CC BY 3.0</div>
+      OR
+      <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>
+*/
+@font-face {
+	font-family: 'Font Awesome 5 Pro';
+	src: url('http://db.onlinewebfonts.com/t/14126655f43628074be1976d86f13eae.eot'); /* IE9*/
+	src: url('http://db.onlinewebfonts.com/t/14126655f43628074be1976d86f13eae.eot?#iefix')
+			format('embedded-opentype'),
+		/* IE6-IE8 */ url('http://db.onlinewebfonts.com/t/14126655f43628074be1976d86f13eae.woff2')
+			format('woff2'),
+		/* chrome firefox */
+			url('http://db.onlinewebfonts.com/t/14126655f43628074be1976d86f13eae.woff') format('woff'),
+		/* chrome firefox */
+			url('http://db.onlinewebfonts.com/t/14126655f43628074be1976d86f13eae.ttf')
+			format('truetype'),
+		/* chrome firefox opera Safari, Android, iOS 4.2+*/
+			url('http://db.onlinewebfonts.com/t/14126655f43628074be1976d86f13eae.svg#Font Awesome 5 Pro')
+			format('svg'); /* iOS 4.1- */
+}
+
+.fal {
+	font-family: 'Font Awesome 5 Pro';
+}
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,700,700i&display=swap');
 $main-font: 'Open Sans', 'Roboto', 'Helvetica', sans-serif;

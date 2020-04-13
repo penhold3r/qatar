@@ -33,7 +33,7 @@ if ( $product->is_in_stock() ) : ?>
 		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
       
       <div class="qty-btn minus">
-         <ion-icon class="icon" name="remove"></ion-icon>
+         <i class="icon">&minus;</i>
       </div>
 		<?php
 		do_action( 'woocommerce_before_add_to_cart_quantity' );
@@ -47,12 +47,12 @@ if ( $product->is_in_stock() ) : ?>
 		do_action( 'woocommerce_after_add_to_cart_quantity' );
 		?>
       <div class="qty-btn add">
-         <ion-icon class="icon" name="add"></ion-icon>
+         <span class="icon">&plus;</span>
       </div>
 
-      <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt">
+      <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button button-icon icon-arrow-right alt">
          <?php echo esc_html( $product->single_add_to_cart_text() ); ?>
-         <ion-icon class="icon" name="arrow-forward"></ion-icon>
+         <i class="icon fal fa-arrow-right"></i>
       </button>
 
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>

@@ -1,4 +1,5 @@
 .hero-landing {
+	background: $light;
 	position: relative;
 	height: 100vh;
 	min-height: 600px;
@@ -38,84 +39,138 @@
 	}
 
 	.featured {
-		background: $primary-color;
 		bottom: 2rem;
 		height: 300px;
 		left: 0;
 		margin: 0 auto;
 		max-width: 800px;
+		overflow: hidden;
 		position: absolute;
 		right: 0;
 		width: 90%;
 		z-index: 10;
 
-		.featured-card {
-			display: flex;
+		.featured-wrapper {
 			height: 100%;
+			position: relative;
+			width: 100%;
+			top: 0;
 
-			.feat-img {
-				background: $light;
-				height: 100%;
-				padding: 2rem;
-				width: 30%;
-
-				img {
-					height: 100%;
-					object-fit: contain;
-					position: relative;
-					width: 100%;
-				}
-			}
-
-			.featured-summary {
+			.featured-card {
+				//background: $primary-color;
 				display: flex;
-				flex-direction: column;
-				padding: 2rem;
+				height: 100%;
 				width: 100%;
+				position: absolute;
+				transition: all 1s ease-in-out;
+				top: 0;
+				z-index: 1;
+				left: 0;
 
-				.tag {
-					border: 1px solid $secondary-color;
-					color: rgba($grey, 0.75);
-					font-size: 0.8rem;
-					margin: 0 auto auto 0;
-					padding: 0.25rem 0.5rem;
-					text-transform: uppercase;
-				}
+				&.active {
+					z-index: 99;
 
-				.product-name {
-					font-family: $display;
-					font-size: 3rem;
-					margin: 0 0 1rem;
-				}
+					.feat-img {
+						animation: animateImage 1s ease-in-out 1s forwards;
+						clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+						opacity: 0.5;
+						filter: brightness(50%);
+					}
 
-				.price {
-					display: inline-flex;
-					border: 1px solid $grey;
-					padding: 0.25rem 1rem;
-					position: relative;
-					font-size: 2rem;
-					width: fit-content;
-
-					.qty {
-						background: $primary-color;
-						bottom: 0;
-						font-size: 1rem;
-						font-weight: bold;
-						height: fit-content;
-						left: calc(100% - 11px);
-						margin: auto 0;
-						padding: 0 0.5rem 0.2rem;
-						position: absolute;
-						top: 0;
-						white-space: nowrap;
+					.featured-summary {
+						background: $secondary-color;
+						animation: animateDetails 1.5s ease-in-out 0.5s forwards;
+						clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
 					}
 				}
 
-				.featured-link {
-					border-color: $grey;
-					margin: auto 0 0 auto;
+				.feat-img {
+					background: #fff;
+					height: 100%;
+					padding: 2rem;
+					width: 30%;
+
+					img {
+						height: 100%;
+						object-fit: contain;
+						position: relative;
+						width: 100%;
+					}
+				}
+
+				.featured-summary {
+					background: $primary-color;
+					display: flex;
+					flex-direction: column;
+					padding: 2rem;
+					width: 70%;
+
+					.tag {
+						border: 1px solid $secondary-color;
+						color: rgba($grey, 0.75);
+						font-size: 0.8rem;
+						margin: 0 auto auto 0;
+						padding: 0.25rem 0.5rem;
+						text-transform: uppercase;
+					}
+
+					.product-name {
+						font-family: $display;
+						font-size: 3rem;
+						margin: 0 0 1rem;
+					}
+
+					.price {
+						display: inline-flex;
+						border: 1px solid $grey;
+						padding: 0.25rem 1rem;
+						position: relative;
+						font-size: 2rem;
+						width: fit-content;
+
+						.qty {
+							background: $primary-color;
+							bottom: 0;
+							font-size: 1rem;
+							font-weight: bold;
+							height: fit-content;
+							left: calc(100% - 11px);
+							margin: auto 0;
+							padding: 0 0.5rem 0.2rem;
+							position: absolute;
+							top: 0;
+							white-space: nowrap;
+						}
+					}
+
+					.featured-link {
+						margin: auto 0 0 auto;
+					}
 				}
 			}
 		}
+	}
+}
+
+@keyframes animateImage {
+	from {
+		opacity: 0.7;
+		clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+		filter: brightness(50%);
+	}
+	to {
+		opacity: 1;
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+		filter: brightness(100%);
+	}
+}
+@keyframes animateDetails {
+	from {
+		background: $secondary-color;
+		clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+	}
+	to {
+		background: $primary-color;
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 	}
 }

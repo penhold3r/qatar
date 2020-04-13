@@ -50,7 +50,7 @@
 			display: flex;
 			flex-direction: column;
 			background: $primary-color;
-			width: $w2-3;
+			width: calc(#{$w2-3} + 1px);
 
 			.product-title {
 				font-family: $display;
@@ -60,8 +60,14 @@
 			} /* .product-title */
 
 			.desc {
+				display: flex;
+				flex-direction: column;
 				border-bottom: 1px solid $secondary-color;
 				padding: 0 2rem 2rem;
+
+				.button {
+					margin: 1rem 0 0 auto;
+				}
 			} /* .desc */
 
 			.price {
@@ -86,6 +92,23 @@
 				}
 			} /* .price */
 
+			.shipping-details {
+				margin: 0 2rem 2rem;
+
+				.icon {
+					font-size: 1.25rem;
+				}
+
+				.shipping-desc {
+					display: inline-block;
+					margin: 0 0.5rem 0;
+				}
+
+				.button {
+					padding: 0.5rem 1rem;
+				}
+			} /* .shipping-details  */
+
 			.cart {
 				border-top: 1px solid $secondary-color;
 				display: flex;
@@ -104,6 +127,7 @@
 					}
 
 					.icon {
+						font-size: 1.5rem;
 						margin: auto;
 						pointer-events: none;
 					}

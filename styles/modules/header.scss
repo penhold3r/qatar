@@ -33,14 +33,12 @@
 		position: relative;
 		width: 100%;
 		display: flex;
+		max-width: $max-width;
+		margin: 0 auto;
 
 		.site-logo {
-			// position: absolute;
-			// left: 0;
-			// right: 0;
-			// top: 0;
 			margin: 0.5rem 0;
-			width: 120px;
+			width: 100px;
 
 			a {
 				display: block;
@@ -111,10 +109,6 @@
 		}
 
 		.navigation {
-			// display: flex;
-			// left: 0;
-			// position: absolute;
-			// top: 0;
 			flex-grow: 1;
 			padding: 0 2rem 0 0;
 			width: 200px;
@@ -126,7 +120,7 @@
 				padding: 0;
 				align-items: center;
 				height: 100%;
-				//flex-direction: column;
+				list-style: none;
 
 				.menu-item {
 					margin: 0;
@@ -135,11 +129,15 @@
 
 					a {
 						color: $light;
-						font-size: 0.8rem;
+						font-size: 0.9rem;
 						text-transform: uppercase;
 						text-decoration: none;
-						letter-spacing: 0.075rem;
+						letter-spacing: 0.1rem;
 						transition: all 0.3s;
+
+						.icon {
+							display: none;
+						}
 					}
 
 					&:hover {
@@ -202,7 +200,8 @@
 					background: $primary-color;
 					color: $grey;
 					margin: 0;
-					padding: 0.25rem;
+					padding: 0.3rem;
+					font-size: 0.9rem;
 				}
 
 				.cart-details {

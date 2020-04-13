@@ -72,6 +72,41 @@
 		} /* .nav-list*/
 	} /* .footer-nav */
 
+	.social {
+		padding: 1rem 0;
+
+		ul {
+			display: flex;
+			list-style: none;
+			justify-content: center;
+			margin: 0 auto;
+			padding: 0;
+
+			li {
+				margin: 0 0.5rem;
+				padding: 0;
+
+				a {
+					display: inline-flex;
+					border: 1px solid $primary-color;
+					justify-content: center;
+					align-items: center;
+					border-radius: 50%;
+					height: 30px;
+					width: 30px;
+					text-decoration: none;
+					transition: all 0.3s;
+					color: #fff;
+
+					&:hover {
+						background: $primary-color;
+						color: $grey;
+					}
+				}
+			}
+		}
+	} /* .social  */
+
 	.copy {
 		border-top: 1px solid $secondary-color;
 

@@ -54,12 +54,30 @@ if ( post_password_required() ) {
 
          <div class="desc">
             <?php the_field('desc'); ?>
+            <div class="button button-sm button-secondary button-icon">
+               <span>Descargar Ficha</span>
+               <i class="icon fal fa-file-download"></i>
+            </div>
          </div>
 
          <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) );?>">
             <?php echo $product->get_price_html(); ?>
             <small class="qty">&times; caja</small>
          </p>
+
+         <?php
+
+         $slug = $product->get_shipping_class_id();
+         $slug_object = get_term_by('term_taxonomy_id', $slug, 'product_shipping_class');
+
+         if($slug_object->description):
+         ?>
+         <div class="shipping-details">
+            <i class="icon fal fa-truck"></i>
+            <p class="shipping-desc"><?php  echo $slug_object->description; ?></p>
+            <button class="button button-sm">Calcular Envío</button>
+         </div>
+         <?php endif; ?>
 
          <?php get_template_part('woocommerce/single-product/add-to-cart/simple', ''); ?>
          

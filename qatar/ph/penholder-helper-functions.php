@@ -30,14 +30,6 @@ function fix_link($raw_link)
 	$reg_ex = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^‌​,.\s])@';
 	$link   = preg_replace($reg_ex, 'http$2://$4', $raw_link);
    
-	return $link;
-}
-
-function pretty_link($raw_link)
-{
-	$reg_ex = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^‌​,.\s])@';
-	$link   = preg_replace($reg_ex, '$4', $raw_link);
-   
 	return rtrim($link, '/');
 }
 
@@ -67,6 +59,7 @@ function categories_to_pages()
 }
 
 add_action('init', 'categories_to_pages');
+
 /**
  *--------------------------------------------
  * Display featured image
@@ -96,7 +89,7 @@ function feat_img(array $custom = array())
       }
    } 
    
-   $img_id  = $options['id'] !== 0 ? $options['id'] : $post->ID;
+   $image_id = $options['id'] !== 0 ? $options['id'] : $post->ID;
    
 	if (has_post_thumbnail($image_id)) {
       echo '<div class="'. $classes .'" '. $data_attr .'>';
@@ -105,7 +98,7 @@ function feat_img(array $custom = array())
 			echo '<div class="bg-placeholder-img" style="background-image: url(' . get_the_post_thumbnail_url($image_id, 'thumbnail') . ')"></div>';
 		}
 	  
-		the_post_thumbnail($options['type'], array(
+		echo get_the_post_thumbnail($image_id, $options['type'], array(
 			'class' => 'feat-img-file'
 		));
       
@@ -113,6 +106,7 @@ function feat_img(array $custom = array())
 	}
 }
 
+// blog page
 function blog_feat_img(array $custom = array())
 {
    global $post;
@@ -148,7 +142,7 @@ function blog_feat_img(array $custom = array())
 	echo '</div><!-- .feat-img -->';
 }
 
-
+// category page
 function category_feat_img($type_img = 'full', $blur = true)
 {
 	$fn = function_exists('category_image_src');
@@ -166,6 +160,7 @@ function category_feat_img($type_img = 'full', $blur = true)
 	echo '</div><!-- .feat-img -->';
 }
 
+// advanced custom field image
 function acf_image($field, array $custom = array())
 {
    global $post;

@@ -11,7 +11,7 @@
 
 ?>
 
-	</div><!-- #content -->
+   </main><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
 
@@ -19,7 +19,7 @@
          <div class="subscription-title">Suscribirme</div>
          <input class="input" type="text" name="name" placeholder="Nombre">
          <input class="input" type="email" name="email" placeholder="E-mail">
-         <input class="button submit" type="submit" value="ok">
+         <input class="button button-primary submit" type="submit" value="ok">
       </form>
       
       <?php
@@ -36,6 +36,26 @@
             ) 
          ); 
       ?>
+
+      <div class="social">
+         <ul class="social-links">
+            <li>
+               <a href="http://facebook.com" target="_blank" rel="noopener noreferrer">
+                  <i class="icon fab fa-facebook-f"></i>
+               </a>
+            </li>
+            <li>
+               <a href="http://instagram.com" target="_blank" rel="noopener noreferrer">
+                  <i class="icon fab fa-instagram"></i>
+               </a>
+            </li>
+            <li>
+               <a href="http://twitter.com" target="_blank" rel="noopener noreferrer">
+                  <i class="icon fab fa-twitter"></i>
+               </a>
+            </li>
+         </ul>
+      </div>
       
 		<div class="copy">
 			<p>
@@ -43,7 +63,6 @@
          </p>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
-</div><!-- #page -->
 
 <?php wp_footer(); ?>
 

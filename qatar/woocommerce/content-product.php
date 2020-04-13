@@ -34,11 +34,12 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 
       <div class="price">
          <strong>$ <?php echo $product->get_price() ?></strong>
+         <i class="icon fal fa-box" title="Precio x caja"></i>
       </div>
 
-      <a href="<?php echo get_permalink( $product->get_id() ) ?>" class="product-link button">
+      <a href="<?php echo get_permalink( $product->get_id() ) ?>" class="product-link button button-primary button-icon icon-arrow-right">
          <span>Comprar</span>
-         <ion-icon class="icon" name="arrow-forward"></ion-icon>
+         <i class="icon fal fa-arrow-right"></i>
       </a>
    </div>
 
