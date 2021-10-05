@@ -1,5 +1,5 @@
 .woocommerce-cart {
-	background: $light-grey;
+	background: $grey-50;
 
 	.woocommerce-notices-wrapper {
 		position: relative;
@@ -16,6 +16,11 @@ form.woocommerce-cart-form {
 	padding: 2rem;
 	position: relative;
 	z-index: 1;
+
+	@include tablet {
+		margin: 0 auto;
+		padding: 1.5rem;
+	}
 
 	table.shop_table {
 		border: none;
@@ -55,7 +60,7 @@ form.woocommerce-cart-form {
 			margin: 0;
 
 			tr {
-				border-bottom: 1px solid $light-grey;
+				border-bottom: 1px solid $grey-50;
 				border-top: none;
 				border-left: none;
 				border-right: none;
@@ -203,7 +208,7 @@ form.woocommerce-cart-form {
 
 							input.qty {
 								border: 1px solid $grey;
-								color: $light-grey;
+								color: $grey-50;
 								font-family: $main-font;
 								padding: 3px;
 								text-align: center;
@@ -253,15 +258,20 @@ form.woocommerce-cart-form {
 							}
 
 							input.input-text {
-								border: 1px solid $light-grey;
-								color: $light-grey;
+								border: 1px solid $grey-50;
+								color: $grey-50;
 								font-family: $main-font;
+								font-size: 0.9rem;
+								font-weight: bold;
 								padding: 0.25rem 0.5rem;
 								transition: all 0.3s;
+								text-transform: uppercase;
 
 								@include placeholder {
-									color: $light-grey;
+									color: $grey-50;
 									transition: all 0.3s;
+									text-transform: none;
+									font-weight: normal;
 								}
 
 								&:focus {
@@ -274,9 +284,6 @@ form.woocommerce-cart-form {
 							}
 
 							.button {
-								padding: 0.25rem 1rem;
-								color: $secondary-color;
-
 								@include tablet {
 									display: block;
 									position: relative;
@@ -287,8 +294,6 @@ form.woocommerce-cart-form {
 
 						.button {
 							&[name='update_cart'] {
-								color: $secondary-color;
-								padding: 0.25rem 1rem;
 								position: absolute;
 								right: 0;
 
@@ -319,7 +324,7 @@ form.woocommerce-cart-form {
 		width: 60%;
 
 		@include tablet {
-			border-top: 1px solid $light-grey;
+			border-top: 1px solid $grey-50;
 			margin: 0 0 2rem;
 			padding-top: 2rem;
 			width: 100%;
@@ -341,16 +346,21 @@ form.woocommerce-cart-form {
 
 			tbody {
 				tr {
-					border-bottom: 1px solid $light-grey;
+					border-bottom: 1px solid $grey-50;
 					border-top: none;
 					border-left: none;
 					border-right: none;
 					margin: 0;
 
 					th {
-						color: $light-grey;
+						color: $grey-50;
 						padding: 1rem;
 						vertical-align: text-top;
+
+						@include tablet {
+							padding: 1rem 1rem 1rem 0;
+							text-align: left;
+						}
 					}
 
 					td {
@@ -361,31 +371,46 @@ form.woocommerce-cart-form {
 						td {
 							ul.woocommerce-shipping-methods {
 								list-style: none;
+								border-bottom: 1px solid $light;
 								margin: 0;
-								padding: 0;
+								padding: 0 0 0.25rem;
 
 								li {
 									margin: 0;
 									padding: 0;
+									display: flex;
+
+									.shipping_method {
+										display: inline-block !important;
+										background: #fff;
+										position: relative;
+										border: 1px solid $primary-color;
+										height: 15px;
+										width: 15px;
+										margin: 0 0.5rem 0 0;
+
+										&:before {
+											content: '\2713';
+											color: transparent;
+											position: absolute;
+											top: 0;
+											left: 0;
+											line-height: 15px;
+											text-align: center;
+											width: 100%;
+										}
+
+										&:checked {
+											&:before {
+												color: $secondary-color;
+											}
+										}
+									}
 								}
 							}
 
 							form.woocommerce-shipping-calculator {
-								a.shipping-calculator-button {
-									color: $primary-color;
-
-									&:after {
-										-webkit-font-smoothing: antialiased;
-										content: '';
-										font-family: 'WooCommerce';
-										font-variant: normal;
-										font-weight: 400;
-										line-height: 1;
-										margin-left: 0.618em;
-										text-decoration: none;
-										text-transform: none;
-									}
-								}
+								margin: 1rem 0 0;
 
 								.shipping-calculator-form {
 									padding: 1rem 0;
@@ -408,30 +433,9 @@ form.woocommerce-cart-form {
 											background-color: #fff;
 											border: 1px solid $primary-color;
 											border-radius: 0;
-											padding: 0 0.5rem;
+											padding: 0.25rem 0.5rem;
 											font-family: $main-font;
 											width: 100%;
-										}
-									}
-
-									p {
-										.button {
-											&[name='calc_shipping'] {
-												border: 1px solid $primary-color;
-												color: $primary-color;
-												cursor: pointer;
-												font-family: $main-font;
-												padding: 0.25rem 0.5rem;
-												position: relative;
-												text-align: center;
-												transition: all 0.3s;
-
-												&:hover {
-													background: $light-grey;
-													border-color: $light-grey;
-													color: #fff;
-												}
-											}
 										}
 									}
 								}
@@ -441,7 +445,7 @@ form.woocommerce-cart-form {
 
 					&.cart-discount {
 						.woocommerce-remove-coupon {
-							background: $light-grey;
+							background: $grey-50;
 							text-decoration: none;
 							color: #fff;
 							padding: 0.1rem 0.5rem;
@@ -470,32 +474,11 @@ form.woocommerce-cart-form {
 			justify-content: flex-end;
 			margin: 1rem 0;
 
-			a.button {
+			.button {
 				margin: 0 0 0 1rem;
-				padding: 0.5rem 1rem;
-				font-weight: normal;
 
 				@include tablet {
 					margin: auto;
-				}
-
-				&.continue-shopping-button {
-					color: $secondary-color;
-
-					&:hover {
-						background: $primary-color;
-					}
-				}
-
-				&.checkout-button {
-					background: $primary-color;
-					color: $grey;
-
-					&:hover {
-						background: $grey;
-						border-color: $grey;
-						color: $primary-color;
-					}
 				}
 			}
 		}

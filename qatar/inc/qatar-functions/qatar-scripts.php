@@ -29,6 +29,7 @@ function qatar_styles_and_scripts()
       true
    );
    
+   // theme data
    $data = array(
       'themeLocale' => get_locale(),
       'themeName' => wp_get_theme()->get('TextDomain'),

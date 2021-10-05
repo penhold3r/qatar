@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 3.5.0
+ * @version 4.0.1
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -21,7 +21,7 @@ do_action( 'woocommerce_before_shipping_calculator' ); ?>
 
 <form class="woocommerce-shipping-calculator" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 
-	<?php printf( '<a href="#" class="shipping-calculator-button">%s</a>', esc_html( ! empty( $button_text ) ? $button_text : __( 'Calculate shipping', 'woocommerce' ) ) ); ?>
+	<?php printf( '<a href="#" class="shipping-calculator-button button button-sm button-secondary button-icon">%s <i class="icon fal fa-map-marker-alt"></i></a>', esc_html( ! empty( $button_text ) ? $button_text : __( 'Calculate shipping', 'woocommerce' ) ) ); ?>
 
 	<section class="shipping-calculator-form" style="display:none;">
 
@@ -83,7 +83,7 @@ do_action( 'woocommerce_before_shipping_calculator' ); ?>
 			</p>
 		<?php endif; ?>
 
-		<p><button type="submit" name="calc_shipping" value="1" class="button"><?php esc_html_e( 'Update', 'woocommerce' ); ?></button></p>
+		<p><button type="submit" name="calc_shipping" value="1" class="button button-sm button-grey"><?php esc_html_e( 'Update', 'woocommerce' ); ?></button></p>
 		<?php wp_nonce_field( 'woocommerce-shipping-calculator', 'woocommerce-shipping-calculator-nonce' ); ?>
 	</section>
 </form>

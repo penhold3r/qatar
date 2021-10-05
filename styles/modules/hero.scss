@@ -4,6 +4,10 @@
 	height: 100vh;
 	min-height: 600px;
 
+	@include tablet {
+		height: auto;
+	}
+
 	.video-landing {
 		background: $black;
 		height: 70%;
@@ -117,16 +121,26 @@
 					.product-name {
 						font-family: $display;
 						font-size: 3rem;
+						line-height: 1.1;
 						margin: 0 0 1rem;
+
+						@include tablet {
+							font-size: 2rem;
+						}
 					}
 
 					.price {
 						display: inline-flex;
 						border: 1px solid $grey;
+						margin: 0 auto 0 0;
 						padding: 0.25rem 1rem;
 						position: relative;
 						font-size: 2rem;
 						width: fit-content;
+
+						@include tablet {
+							font-size: 1.5rem;
+						}
 
 						.qty {
 							background: $primary-color;
@@ -140,6 +154,10 @@
 							position: absolute;
 							top: 0;
 							white-space: nowrap;
+
+							@include tablet {
+								font-size: 0.9rem;
+							}
 						}
 					}
 

@@ -1,0 +1,114 @@
+.button {
+	align-items: center;
+	border-radius: 0;
+	border: 1px solid $grey;
+	color: $grey;
+	cursor: pointer;
+	display: inline-flex;
+	font-family: $main-font;
+	font-size: 1rem;
+	justify-items: center;
+	padding: 0.25rem 1rem;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: all 0.3s;
+	user-select: none;
+
+	&:hover {
+		background: $secondary-color;
+		color: #fff;
+	}
+
+	&.button-primary {
+		border: 1px solid $primary-color;
+
+		&:hover {
+			background: $primary-color;
+		}
+
+		&.filled {
+			background: $primary-color;
+
+			&:hover {
+				background: $secondary-color;
+			}
+		}
+	}
+
+	&.button-secondary {
+		border: 1px solid $secondary-color;
+		color: $secondary-color;
+
+		&:hover {
+			background: $secondary-color;
+			color: #fff;
+		}
+
+		&.filled {
+			background: $secondary-color;
+			color: #fff;
+
+			&:hover {
+				background: $grey-25;
+			}
+		}
+	}
+
+	&.button-grey {
+		border: 1px solid $grey-75;
+		background: $light;
+		color: #fff;
+
+		&:hover {
+			background: $grey-50;
+		}
+	}
+
+	&.button-cta {
+		background: $primary-color;
+
+		&:hover {
+			background: $grey;
+			color: $primary-color;
+		}
+	}
+
+	&.button-icon {
+		text-align: left;
+		padding: 0.25rem 0 0.25rem 1rem;
+
+		.icon {
+			margin: auto 1rem auto 0.5rem;
+			transition: all 0.2s;
+		}
+
+		&.icon-arrow-right {
+			&:hover {
+				.icon {
+					margin: auto 0.5rem auto 1rem;
+				}
+			}
+		}
+	}
+
+	&.button-sm {
+		font-size: 0.9rem;
+
+		.icon {
+			font-size: 1rem;
+		}
+	}
+
+	&.button-lg {
+		padding: 0.5rem 1rem;
+
+		&.button-icon {
+			padding: 0.5rem 0 0.5rem 1rem;
+		}
+
+		.icon {
+			font-size: 1.1rem;
+		}
+	}
+}

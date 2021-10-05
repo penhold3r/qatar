@@ -10,6 +10,10 @@ div.woocommerce {
 		left: 0;
 		overflow: hidden;
 
+		@include tablet {
+			height: 250px;
+		}
+
 		img {
 			height: 100%;
 			object-fit: cover;
@@ -25,6 +29,12 @@ div.woocommerce {
 	left: 0;
 	right: 0;
 	margin: 0 auto;
+
+	@include tablet {
+		top: 60px;
+		left: 1rem;
+		right: 1rem;
+	}
 }
 
 .woocommerce-notices-wrapper {
@@ -32,13 +42,25 @@ div.woocommerce {
 	max-width: 800px;
 
 	.woocommerce-message {
+		border: 1px solid $secondary-color;
 		background: #fff;
 		padding: 1rem;
 		text-align: center;
 
+		@include tablet {
+			display: flex;
+			flex-direction: column;
+			font-size: 0.9rem;
+		}
+
 		.button {
 			padding: 0.25rem 1rem;
 			margin-right: 1rem;
+
+			@include tablet {
+				width: fit-content;
+				margin: 0 auto 1rem;
+			}
 		}
 
 		a {
@@ -76,7 +98,7 @@ div.woocommerce {
 		transition: all 0.3s;
 
 		&:hover {
-			background: $light-grey;
+			background: $grey-50;
 		}
 	}
 } /* .return-to-shop  */

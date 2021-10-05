@@ -22,9 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>" class="continue-shopping-button button">
+<a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>" class="continue-shopping-button button button-secondary button-lg">
 	<?php esc_html_e( 'Continue shopping', 'woocommerce' ); ?>
 </a>
-<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button button">
+<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button button button-cta button-lg">
 	<?php esc_html_e( 'Proceed to checkout', 'woocommerce' ); ?>
 </a>

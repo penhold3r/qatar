@@ -1,11 +1,16 @@
 .about-landing {
 	background: $light;
 	padding: 4rem 1rem;
+	overflow-x: hidden;
 
 	.acf-image {
 		max-width: 800px;
 		margin: 0 auto;
 		height: 350px;
+
+		@include tablet {
+			height: 200px;
+		}
 
 		img {
 			display: block;
@@ -23,6 +28,10 @@
 		width: 600px;
 		margin: 0 auto;
 		top: -6rem;
+
+		@include tablet {
+			width: 90%;
+		}
 
 		&:before {
 			border: 1px solid $primary-color;

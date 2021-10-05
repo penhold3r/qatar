@@ -42,6 +42,21 @@
 		width: 375px;
 		z-index: 1;
 
+		@include tablet {
+			margin: auto;
+			width: 85%;
+			max-width: 400px;
+
+			&[data-aos='fade-left'] {
+				transform: translate3d(0, 0, 0) !important;
+
+				&.aos-animate,
+				&.aos-init {
+					transform: translate3d(0, 0, 0) !important;
+				}
+			}
+		}
+
 		h3 {
 			color: $light;
 			font-family: $display;

@@ -1,0 +1,18 @@
+@font-face {
+	font-family: 'Font Awesome 5 Pro';
+	src: url('fonts/font-awesome-pro/14126655f43628074be1976d86f13eae.eot'); /* IE9*/
+	src: url('fonts/font-awesome-pro/14126655f43628074be1976d86f13eae.woff2') format('woff2'),
+		/* chrome firefox */ url('./fonts/font-awesome-pro/14126655f43628074be1976d86f13eae.woff')
+			format('woff'),
+		/* chrome firefox */ url('fonts/font-awesome-pro/14126655f43628074be1976d86f13eae.ttf')
+			format('truetype'),
+		/* chrome firefox opera Safari, Android, iOS 4.2+*/
+			url('fonts/font-awesome-pro/14126655f43628074be1976d86f13eae.svg#Font Awesome 5 Pro')
+			format('svg'); /* iOS 4.1- */
+}
+
+.fal,
+.fad,
+.far {
+	font-family: 'Font Awesome 5 Pro';
+}

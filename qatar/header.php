@@ -28,12 +28,14 @@ $nav_config = array(
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="theme" content="#ff0000">
+   <meta name="theme-color" content="#3f3f3b">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 	<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32 192x192 256x256 512x512" />
+   <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(). '/css/fal.css' ?>">
 
    <?php wp_head(); ?>
+   
    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
    <!-- <script nomodule="" src="https://xunpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>  -->
    

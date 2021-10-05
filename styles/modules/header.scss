@@ -1,5 +1,6 @@
 .site-header {
-	background: rgba($black, 0);
+	background: rgba(white, 0.9);
+	backdrop-filter: blur(5px);
 	height: 60px;
 	left: 0;
 	position: fixed;
@@ -8,23 +9,28 @@
 	width: 100%;
 	z-index: 99;
 
-	&:before {
-		background: linear-gradient(rgba($black, 0.85), rgba($black, 0));
-		content: '';
-		height: 100%;
-		width: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;
-		transition: all 0.4s;
+	@include tablet {
+		backdrop-filter: none;
+		background: white;
 	}
 
-	&.opaque {
-		background: rgba($black, 0.85);
+	// &:before {
+	// 	background: linear-gradient(rgba(white, 0.85), rgba(white, 0));
+	// 	content: '';
+	// 	height: 100%;
+	// 	width: 100%;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+	// 	transition: all 0.4s;
+	// }
 
-		&:before {
-			opacity: 0;
-		}
+	&.opaque {
+		background: rgba(white, 0.9);
+
+		// &:before {
+		// 	opacity: 0;
+		// }
 	}
 
 	.inner-header {
@@ -37,8 +43,13 @@
 		margin: 0 auto;
 
 		.site-logo {
+			display: flex;
 			margin: 0.5rem 0;
 			width: 100px;
+
+			@include tablet {
+				width: 80px;
+			}
 
 			a {
 				display: block;
@@ -46,9 +57,10 @@
 				text-decoration: none;
 
 				img {
+					height: 100%;
+					object-fit: contain;
 					display: block;
 					width: 100%;
-					filter: invert(100%);
 				}
 			}
 		}
@@ -113,6 +125,15 @@
 			padding: 0 2rem 0 0;
 			width: 200px;
 
+			@include tablet {
+				background: $black;
+				bottom: 0;
+				left: 0;
+				position: fixed;
+				width: 100%;
+				padding: 0;
+			}
+
 			.nav-list {
 				display: flex;
 				justify-content: flex-end;
@@ -122,26 +143,56 @@
 				height: 100%;
 				list-style: none;
 
+				@include tablet {
+					justify-content: space-around;
+				}
+
 				.menu-item {
 					margin: 0;
 					padding: 0.25rem 0.75rem;
 					transition: all 0.3s;
 
+					@include tablet {
+						width: 100%;
+						display: block;
+						padding: 0;
+					}
+
 					a {
-						color: $light;
+						color: $black;
 						font-size: 0.9rem;
 						text-transform: uppercase;
 						text-decoration: none;
 						letter-spacing: 0.1rem;
 						transition: all 0.3s;
+						padding: 1rem;
+
+						@include tablet {
+							color: $light;
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							font-size: 0.65rem;
+							padding: 0.75rem 1rem 0.5rem;
+						}
 
 						.icon {
 							display: none;
+
+							@include tablet {
+								display: block;
+								margin-bottom: 0.5rem;
+								font-size: 1.25rem;
+							}
 						}
 					}
 
 					&:hover {
 						background: rgba($black, 0.5);
+
+						@include tablet {
+							background-color: $grey;
+						}
 
 						a {
 							color: $primary-color;
@@ -180,11 +231,11 @@
 		.cart {
 			border: 1px solid $primary-color;
 			margin: auto 0;
-			// position: absolute;
-			// right: 1rem;
-			// top: 0;
-			// bottom: 0;
 			height: fit-content;
+
+			@include tablet {
+				margin: auto 0 auto auto;
+			}
 
 			.cart-link {
 				display: flex;
@@ -194,6 +245,10 @@
 
 				&:hover {
 					background: $grey;
+
+					.cart-details {
+						color: $light;
+					}
 				}
 
 				.icon {
@@ -206,7 +261,7 @@
 
 				.cart-details {
 					display: flex;
-					color: $light;
+					color: $black;
 					padding: 0 0.5rem 0 0;
 
 					.items {

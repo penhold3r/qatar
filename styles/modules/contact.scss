@@ -1,0 +1,157 @@
+.contact-page {
+	background: $light;
+	padding: 5rem 1rem 3rem;
+	position: relative;
+	overflow-x: hidden;
+
+	&:before {
+		content: '';
+		position: absolute;
+		width: 100vw;
+		height: 300px;
+		left: 0;
+		top: 0;
+		background: $grey;
+		z-index: 0;
+	}
+
+	&__header {
+		padding: 2rem 0;
+		position: relative;
+		z-index: 1;
+
+		&__title {
+			color: #fff;
+			font-family: $display;
+			font-size: 2.5rem;
+			margin: 0;
+			text-align: center;
+		}
+	}
+
+	&__content {
+		border: 1px solid $primary-color;
+		background: #fff;
+		padding: 2rem;
+		max-width: 800px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 2;
+		display: flex;
+
+		@include tablet {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.contact-info {
+			width: 50%;
+
+			@include tablet {
+				width: 100%;
+				max-width: 500px;
+			}
+
+			h3 {
+				margin: 0 0 2rem;
+			}
+		} /* .contact-info */
+
+		.contact-form {
+			display: flex;
+			flex-direction: column;
+			margin: 4rem 0 2rem;
+			position: relative;
+			width: 50%;
+			overflow: hidden;
+
+			@include tablet {
+				margin: 2rem 0 2rem;
+				width: 100%;
+				max-width: 500px;
+			}
+
+			.field-container {
+				background: $primary-color;
+				display: flex;
+				margin: 0 0 1rem;
+
+				&:before {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 3rem;
+				}
+
+				.form-field {
+					border: 1px solid $primary-color;
+					background: #fff;
+					padding: 0.5rem 1rem;
+					width: 100%;
+					transition: all 0.3s;
+
+					&.textarea {
+						height: 6rem;
+						resize: vertical;
+					}
+
+					@include placeholder {
+						transition: all 0.5s;
+					}
+
+					&:focus {
+						border-color: $secondary-color;
+
+						@include placeholder {
+							opacity: 0;
+							padding: 0 0 0 3rem;
+						}
+					}
+				} /* .form-field */
+			} /* .field-container */
+
+			.submit {
+				margin: 0 0 0 auto;
+			} /* .submit  */
+
+			.output-msg {
+				opacity: 0;
+				pointer-events: none;
+				transition: all 0.4s;
+				top: -30px;
+				position: absolute;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: flex;
+
+				.close-form-msg {
+					position: absolute;
+					top: 0.5rem;
+					right: 0.5rem;
+					padding: 0.25rem 0.75rem;
+					background-color: $secondary-color;
+					cursor: pointer;
+				}
+
+				p {
+					margin: 0;
+					font-size: 1.25rem;
+					text-align: center;
+				}
+
+				&.visible {
+					opacity: 1;
+					background: $primary-color;
+					top: 0;
+					pointer-events: all;
+
+					p {
+						margin: auto;
+					}
+				}
+			} /* .output-msg  */
+		} /* .contact-form */
+	}
+}

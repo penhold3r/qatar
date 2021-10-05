@@ -28,7 +28,12 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 
   <div class="product-inner-card">
 
-      <?php feat_img(array('id' => $product->get_id(), 'blur' => false)); ?>
+      <?php 
+         feat_img(array(
+            'id' => $product->get_id(), 
+            'placeholder' => get_template_directory_uri() . '/css/img/bottle-placeholder.png'
+         )); 
+      ?>
 
       <h3 class="product-name"><?php echo $product->get_name(); ?></h3>
 

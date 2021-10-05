@@ -75,7 +75,7 @@
 				margin: 0;
 
 				tr {
-					border-bottom: 1px solid $light-grey;
+					border-bottom: 1px solid $grey-50;
 					border-top: none;
 					border-left: none;
 					border-right: none;
@@ -125,7 +125,7 @@
 				display: inline-table;
 
 				tr {
-					border-bottom: 1px solid $light-grey;
+					border-bottom: 1px solid $grey-50;
 					border-top: none;
 					border-left: none;
 					border-right: none;
@@ -173,7 +173,7 @@
 		}
 
 		address {
-			border-top: 1px solid $light-grey;
+			border-top: 1px solid $grey-50;
 			padding: 1rem 0;
 		}
 	}

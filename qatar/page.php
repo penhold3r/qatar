@@ -30,6 +30,9 @@ else:
       elseif($post->post_name === 'preguntas-frecuentes' ):
          get_template_part('template-parts/content', 'faq');
       
+      elseif($post->post_name === 'contacto' ):
+         get_template_part('template-parts/content', 'contact');
+      
       else:
          get_template_part( 'template-parts/content', 'page' );
          

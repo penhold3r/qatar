@@ -73,7 +73,8 @@ function feat_img(array $custom = array())
 		'blur' => true,
 		'classes' => array(),
 		'id' => 0,
-      'data' => array()
+      'data' => array(),
+      'placeholder' => null,
 	);
 
 	$options = array_merge($defaults, $custom);
@@ -95,7 +96,8 @@ function feat_img(array $custom = array())
       echo '<div class="'. $classes .'" '. $data_attr .'>';
 
 		if ($options['blur']) {
-			echo '<div class="bg-placeholder-img" style="background-image: url(' . get_the_post_thumbnail_url($image_id, 'thumbnail') . ')"></div>';
+         $placeholder = $options['placeholder'] ?? get_the_post_thumbnail_url($image_id, 'thumbnail');
+			echo '<div class="bg-placeholder-img" style="background-image: url(' . $placeholder . ')"></div>';
 		}
 	  
 		echo get_the_post_thumbnail($image_id, $options['type'], array(
@@ -438,23 +440,31 @@ function build_form(array $f_options = array())
          array(
             'type' => 'text',
             'name' => 'name',
-            'placeholder' => 'Name'
+            'labe' => false,
+            'placeholder' => 'Name',
+            'container_class' => false
          ),
          array(
             'type' => 'email',
             'name' => 'email',
-            'placeholder' => 'E-Mail'
+            'labe' => false,
+            'placeholder' => 'E-Mail',
+            'container_class' => false
          ),
          array(
             'type' => 'textarea',
             'name' => 'message',
-            'placeholder' => 'Message'
+            'labe' => false,
+            'placeholder' => 'Message',
+            'container_class' => false
          )
       ),
       'field_container' => false,
       'required' => true,
       'submit_value' => 'Send',
-      'submit_class' => 'form-submit'
+      'submit_class' => 'form-submit',
+      'submit_content_after' => false,
+      'submit_content_before' => false
    );
 
    $options = array_merge($default_options, $f_options);
@@ -474,7 +484,7 @@ function build_form(array $f_options = array())
 	  $input_field = '';
 
       if ($options['field_container']) {
-         $input_field .= '<div class="field-container '. $options['field_container'] .'">';
+         $input_field .= '<div class="field-container '. $options['field_container'] . $field['container_class'] .'">';
       }
 
       if ($field['label']) {
@@ -487,6 +497,7 @@ function build_form(array $f_options = array())
       
       $input_field .= ' id="'. $field['name'] .'"';
       $input_field .= ' name="'. $field['name'] .'"';
+      if($field['type'] == 'textarea') $field['class'] .= 'textarea';
       $input_field .= ' class="'. $options['form_field'] .' '. $field['class'] .'"';
 
       if ($field['placeholder']) {
@@ -519,20 +530,25 @@ function build_form(array $f_options = array())
       if ($options['field_container']) {
          $input_field .='</div><!-- .field-container -->';
       }
-
-      if ($options['form_after']) {
-         $form .= $options['form_after'];
-      }
       
       $form .= $input_field;
    }
 
    $form .='<input class="human" type="text" tabindex="-1" style="background:transparent;border:none;height:0;pointer-events:none;visibility:hidden;width:0;"/>';
-   $form .='<input type="submit" class="'. $options['submit_class'] .'" value="'. $options['submit_value'] .'">';
+
+   $form .='<button type="submit" class="submit '. $options['submit_class'] .'" >';
+   if($options['submit_content_after']) $form .= $options['submit_content_after'];
+   $form .= '<span>'. $options['submit_value']  .'</span>';
+   if($options['submit_content_before']) $form .= $options['submit_content_before'];
+   $form .= '</button>';
    
+   if ($options['form_after']) {
+      $form .= $options['form_after'];
+   }
+
    $form .='</form><!-- #'. $options['form_id'] .' -->';
 
-   return $form;
+   echo $form;
 } 
 //--------------------------------------------------------------
 /**
@@ -589,7 +605,7 @@ function create_custom_post_type(array $args = array())
 		'name'                => _x($options['general_name'], 'Post Type General Name', $theme_name),
 		'singular_name'       => _x($options['singular_name'], 'Post Type Singular Name', $theme_name),
 		'menu_name'           => __($options['general_name'], $theme_name),
-		'parent_item_colon'   => __('Post Padre', $theme_name),
+		'parent_item_colon'   => __('Post Superior', $theme_name),
 		'all_items'           => __('Todos los Posts', $theme_name),
 		'view_item'           => __('Ver Post', $theme_name),
 		'add_new_item'        => __('Añadir nuevo Post', $theme_name),
@@ -620,4 +636,57 @@ function create_custom_post_type(array $args = array())
 
 	register_post_type($custom_post_type_name, $args);
 }
+//--------------------------------------------------------------
+/**
+ * create custom taxonomy
+ */
 
+function create_custom_taxonomy(array $args = array())
+{
+	$defaults = array(
+		'singular_name'      => 'Custom Taxonomy',
+      'general_name'       => 'Custom Taxonomies',
+      'post_type'          => 'post'
+   );
+
+   $options = array_merge($defaults, $args);
+   
+   $options['slug'] = strtolower(
+      trim(
+         preg_replace(
+            '/[^A-Za-z0-9-]+/', 
+            '-', 
+            $options['singular_name']
+         ), 
+         '-'
+      )
+   );
+
+   $labels = array(
+      'name' => _x( $options['general_name'], 'taxonomy general name' ),
+      'singular_name' => _x( $options['singular_name'], 'taxonomy singular name' ),
+      'search_items' =>  __( 'Search '.$options['general_name'] ),
+      'all_items' => __( 'All '.$options['general_name'] ),
+      'parent_item' => __( 'Parent '.$options['singular_name'] ),
+      'parent_item_colon' => __( 'Parent '.$options['singular_name'].':' ),
+      'edit_item' => __( 'Edit '.$options['singular_name'] ), 
+      'update_item' => __( 'Update '.$options['singular_name'] ),
+      'add_new_item' => __( 'Add New '.$options['singular_name'] ),
+      'new_item_name' => __( 'New '.$options['singular_name'].' Name' ),
+      'menu_name' => __( $options['general_name'] ),
+   ); 	
+   
+   register_taxonomy(
+      $options['slug'], 
+      array($options['post_type']), 
+      array(
+         'hierarchical' => true,
+         'labels' => $labels,
+         'show_ui' => true,
+         'show_admin_column' => true,
+         'query_var' => true,
+         'rewrite' => array( 'slug' => $options['slug'] ),
+      )
+   );
+   
+}

@@ -7,6 +7,13 @@
 		justify-content: center;
 		margin: 0 0 2rem;
 
+		@include tablet {
+			flex-direction: column;
+			align-items: center;
+			max-width: 400px;
+			margin: 0 auto 2rem;
+		}
+
 		.subscription-title {
 			margin: 0 1rem 0 0;
 			color: $light;
@@ -14,6 +21,12 @@
 			font-style: italic;
 			font-weight: bold;
 			font-size: 1.5rem;
+
+			@include tablet {
+				text-align: center;
+				width: 100%;
+				margin: 0 0 1rem;
+			}
 		} /* .subscription-title */
 
 		.input {
@@ -27,6 +40,11 @@
 				font-style: italic;
 				color: $light;
 				transition: all 0.3s;
+			}
+
+			@include tablet {
+				margin: 0 0 1rem;
+				width: 100%;
 			}
 
 			&:focus {
@@ -46,6 +64,10 @@
 			padding: 0.25rem 1rem;
 			text-transform: lowercase;
 
+			@include tablet {
+				width: fit-content;
+			}
+
 			&:hover {
 				color: $grey;
 			}
@@ -61,6 +83,10 @@
 			list-style: none;
 			display: flex;
 			justify-content: center;
+
+			@include tablet {
+				flex-direction: column;
+			}
 
 			.menu-item {
 				padding: 0.5rem;

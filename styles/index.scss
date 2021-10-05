@@ -28,7 +28,14 @@
 html,
 body {
 	scroll-behavior: smooth;
+
+	@include firefox {
+		font-size: 85%;
+	}
+
+	@include scrollbars(10px, $primary-color, $grey);
 }
+
 body {
 	background: #fff;
 	color: $grey;
@@ -57,6 +64,10 @@ body {
 		}
 	}
 
+	a {
+		color: $secondary-color;
+	}
+
 	strong,
 	b {
 		font-weight: bold;
@@ -75,69 +86,6 @@ body {
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-	}
-
-	.button {
-		align-items: center;
-		border-radius: 0;
-		border: 1px solid $grey;
-		color: $grey;
-		cursor: pointer;
-		display: inline-flex;
-		font-family: $main-font;
-		font-size: 1rem;
-		justify-items: center;
-		padding: 0.25rem 1rem;
-		text-decoration: none;
-		text-transform: uppercase;
-		transition: all 0.3s;
-		user-select: none;
-
-		&:hover {
-			background: $secondary-color;
-			color: #fff;
-		}
-
-		&.button-primary {
-			border: 1px solid $primary-color;
-
-			&:hover {
-				background: $primary-color;
-			}
-		}
-
-		&.button-secondary {
-			border: 1px solid $secondary-color;
-
-			&:hover {
-				background: $secondary-color;
-			}
-		}
-
-		&.button-sm {
-			font-size: 0.9rem;
-
-			.icon {
-				font-size: 1rem;
-			}
-		}
-
-		&.button-icon {
-			padding: 0.25rem 0 0.25rem 1rem;
-
-			.icon {
-				margin: auto 1rem auto 0.5rem;
-				transition: all 0.3s;
-			}
-
-			&.icon-arrow-right {
-				&:hover {
-					.icon {
-						margin: auto 0.5rem auto 1rem;
-					}
-				}
-			}
-		}
 	}
 
 	.feat-img {
@@ -162,6 +110,10 @@ body {
 			top: 0;
 			z-index: 2;
 		}
+	}
+
+	.simpleParallax {
+		height: 100%;
 	}
 
 	.fader {

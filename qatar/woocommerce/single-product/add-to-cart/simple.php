@@ -50,7 +50,7 @@ if ( $product->is_in_stock() ) : ?>
          <span class="icon">&plus;</span>
       </div>
 
-      <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button button-icon icon-arrow-right alt">
+      <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button button-icon icon-arrow-right button-lg button-cta alt">
          <?php echo esc_html( $product->single_add_to_cart_text() ); ?>
          <i class="icon fal fa-arrow-right"></i>
       </button>

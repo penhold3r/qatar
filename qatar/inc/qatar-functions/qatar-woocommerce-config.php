@@ -119,7 +119,10 @@ function qatar_cart_count_fragments( $fragments ) {
    return $fragments; 
 }
 
-
+//-----------------------------------------------------------
+/**
+ *  custom "eliminar" button
+ */
 function qatar_cart_totals_coupon_html( $value ) {
 
    $value = str_replace('[Eliminar]', 'Eliminar', $value);
@@ -129,3 +132,23 @@ function qatar_cart_totals_coupon_html( $value ) {
 }
 
 add_filter( 'woocommerce_cart_totals_coupon_html', 'qatar_cart_totals_coupon_html', 10, 1 );
+
+
+//-----------------------------------------------------------
+/**
+ * privacy policy translate
+ */
+add_filter( 'woocommerce_get_privacy_policy_text', function ( $text, $type ) {
+   switch ( $type ) {
+      case 'checkout':
+         /* translators: %s privacy policy page name and link */
+         $text = sprintf( __( 'Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our %s.', 'woocommerce' ), '[privacy_policy]' );
+         break;
+      case 'registration':
+         /* translators: %s privacy policy page name and link */
+         $text = sprintf( __( 'Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our %s.', 'woocommerce' ), '[privacy_policy]' );
+         break;
+   }
+
+   return $text;
+}, 10, 2);

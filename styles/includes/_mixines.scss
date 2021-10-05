@@ -1,26 +1,55 @@
-@mixin optional-at-root($sel) {
+// escape nesting at root
+@mixin at-root($sel) {
 	@at-root #{if(not &, $sel, selector-append(&, $sel))} {
 		@content;
 	}
 }
-//
+
+// prefix placeholder
 @mixin placeholder {
-	@include optional-at-root('::-webkit-input-placeholder') {
+	@include at-root('::-webkit-input-placeholder') {
 		@content;
 	}
-	@include optional-at-root(':-moz-placeholder') {
+	@include at-root(':-moz-placeholder') {
 		@content;
 	}
-	@include optional-at-root('::-moz-placeholder') {
+	@include at-root('::-moz-placeholder') {
 		@content;
 	}
-	@include optional-at-root(':-ms-input-placeholder') {
+	@include at-root(':-ms-input-placeholder') {
 		@content;
 	}
 }
 
-//
-@mixin full($width: 1400px) {
+// scrollbar styling
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+	// Webkit
+	&::-webkit-scrollbar {
+		width: $size;
+		height: $size;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $background-color;
+	}
+
+	// Firefox
+	scrollbar-color: $foreground-color $background-color;
+}
+
+// firefox targeting
+@mixin firefox {
+	@supports (-moz-appearance: none) {
+		@content;
+	}
+}
+
+// mediaqueries
+@mixin full($width: 1300px) {
 	@media screen and (max-width: $width) {
 		@content;
 	}
@@ -30,12 +59,12 @@
 		@content;
 	}
 }
-@mixin tablet($width: 850px) {
+@mixin tablet($width: 760px) {
 	@media screen and (max-width: $width) {
 		@content;
 	}
 }
-@mixin phone($width: 640px) {
+@mixin phone($width: 540px) {
 	@media screen and (max-width: $width) {
 		@content;
 	}
