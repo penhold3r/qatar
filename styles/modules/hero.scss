@@ -1,20 +1,19 @@
 .hero-landing {
-	background: $light;
+	display: flex;
+	background: $grey;
 	position: relative;
-	height: 100vh;
+	height: 80vh;
 	min-height: 600px;
 
 	@include tablet {
 		height: auto;
 	}
 
-	.video-landing {
-		background: $black;
-		height: 70%;
-		min-height: 550px;
-		overflow: hidden;
-		position: relative;
+	&__background {
+		position: absolute;
+		height: 100%;
 		width: 100%;
+		z-index: 0;
 
 		&:before {
 			background: rgba($black, 0.5);
@@ -28,143 +27,70 @@
 			z-index: 1;
 		}
 
-		video {
-			height: auto;
-			left: 50%;
-			min-height: 100%;
-			min-width: 100%;
+		&.video {
+			background: $black;
+			height: 100%;
 			overflow: hidden;
-			position: absolute;
-			top: 50%;
-			transform: translateX(-50%) translateY(-50%);
-			width: auto;
-			z-index: 0;
+			position: relative;
+			width: 100%;
+
+			video {
+				height: auto;
+				left: 50%;
+				min-height: 100%;
+				min-width: 100%;
+				overflow: hidden;
+				position: absolute;
+				top: 50%;
+				transform: translateX(-50%) translateY(-50%);
+				width: auto;
+				z-index: 0;
+			}
+		}
+
+		&.image {
+			height: 100%;
+			width: 100%;
+
+			img {
+				display: block;
+				height: 100%;
+				object-fit: cover;
+				width: 100%;
+			}
 		}
 	}
 
-	.featured {
-		bottom: 2rem;
-		height: 300px;
-		left: 0;
-		margin: 0 auto;
-		max-width: 800px;
-		overflow: hidden;
-		position: absolute;
-		right: 0;
-		width: 90%;
-		z-index: 10;
+	&__text {
+		color: white;
+		margin: auto;
+		max-width: $max-width;
+		padding: 1rem;
+		position: relative;
+		width: 100%;
+		z-index: 1;
 
-		.featured-wrapper {
-			height: 100%;
-			position: relative;
-			width: 100%;
-			top: 0;
+		h2 {
+			color: $primary-color;
+			font-weight: 300;
+			font-size: 4rem;
+			letter-spacing: 0.05rem;
+			margin: 0;
+			text-transform: uppercase;
+		}
 
-			.featured-card {
-				//background: $primary-color;
-				display: flex;
-				height: 100%;
-				width: 100%;
-				position: absolute;
-				transition: all 1s ease-in-out;
-				top: 0;
-				z-index: 1;
-				left: 0;
+		p {
+			margin: 0;
+			font-family: $display;
+			font-size: 2rem;
+			font-weight: 300;
 
-				&.active {
-					z-index: 99;
+			letter-spacing: 0.1rem;
+			text-transform: uppercase;
 
-					.feat-img {
-						animation: animateImage 1s ease-in-out 1s forwards;
-						clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-						opacity: 0.5;
-						filter: brightness(50%);
-					}
-
-					.featured-summary {
-						background: $secondary-color;
-						animation: animateDetails 1.5s ease-in-out 0.5s forwards;
-						clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-					}
-				}
-
-				.feat-img {
-					background: #fff;
-					height: 100%;
-					padding: 2rem;
-					width: 30%;
-
-					img {
-						height: 100%;
-						object-fit: contain;
-						position: relative;
-						width: 100%;
-					}
-				}
-
-				.featured-summary {
-					background: $primary-color;
-					display: flex;
-					flex-direction: column;
-					padding: 2rem;
-					width: 70%;
-
-					.tag {
-						border: 1px solid $secondary-color;
-						color: rgba($grey, 0.75);
-						font-size: 0.8rem;
-						margin: 0 auto auto 0;
-						padding: 0.25rem 0.5rem;
-						text-transform: uppercase;
-					}
-
-					.product-name {
-						font-family: $display;
-						font-size: 3rem;
-						line-height: 1.1;
-						margin: 0 0 1rem;
-
-						@include tablet {
-							font-size: 2rem;
-						}
-					}
-
-					.price {
-						display: inline-flex;
-						border: 1px solid $grey;
-						margin: 0 auto 0 0;
-						padding: 0.25rem 1rem;
-						position: relative;
-						font-size: 2rem;
-						width: fit-content;
-
-						@include tablet {
-							font-size: 1.5rem;
-						}
-
-						.qty {
-							background: $primary-color;
-							bottom: 0;
-							font-size: 1rem;
-							font-weight: bold;
-							height: fit-content;
-							left: calc(100% - 11px);
-							margin: auto 0;
-							padding: 0 0.5rem 0.2rem;
-							position: absolute;
-							top: 0;
-							white-space: nowrap;
-
-							@include tablet {
-								font-size: 0.9rem;
-							}
-						}
-					}
-
-					.featured-link {
-						margin: auto 0 0 auto;
-					}
-				}
+			strong {
+				font-family: $main-font;
+				font-weight: 300;
 			}
 		}
 	}
