@@ -1,0 +1,48 @@
+.specs {
+	align-items: center;
+	display: flex;
+	gap: 2rem;
+	justify-content: center;
+	max-width: $max-width;
+	padding: 6rem 1rem;
+	margin: 0 auto;
+
+	@include tablet {
+		flex-direction: column;
+	}
+
+	.spec {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 0;
+
+		&__icon {
+			color: $grey-25;
+			font-size: 2rem;
+
+			.payment:before {
+				content: '\f09d';
+			}
+
+			.shipping:before {
+				content: '\f48b';
+			}
+
+			.returns:before {
+				content: '\f021';
+			}
+		}
+
+		&__name {
+			margin: 1rem 0 0.5rem;
+		}
+
+		&__text {
+			color: $grey-25;
+			font-family: $display;
+			font-style: italic;
+			margin: 0;
+		}
+	}
+}

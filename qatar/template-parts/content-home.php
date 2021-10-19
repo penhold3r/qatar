@@ -44,14 +44,28 @@
 
 </section>
 
-<section class="security">
+<section class="specs">
+   <?php
 
-   <?php acf_image('payment_image', array('blur' => false, 'classes' => array('plx'))) ?>
+      $specs = get_field_object('specs');
 
-   <div class="security-text" data-aos="fade-left">
-      <?php the_field('payment_text') ?>
+      foreach ($specs['sub_fields'] as $item):
+   ?>
+
+   <div class="spec">
+      <div class="spec__icon">
+         <i
+            class="icon fal <?php echo $item['name'] ?>"></i>
+      </div>
+      <h4 class="spec__name">
+         <?php echo $item['label'] ?>
+      </h4>
+      <p class="spec__text">
+         <?php echo $specs['value'][$item['name']] ?>
+      </p>
    </div>
 
+   <?php endforeach; ?>
 </section>
 <!-- .security -->
 

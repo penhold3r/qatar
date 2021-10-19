@@ -84,7 +84,6 @@
 			font-family: $display;
 			font-size: 2rem;
 			font-weight: 300;
-
 			letter-spacing: 0.1rem;
 			text-transform: uppercase;
 
@@ -96,25 +95,25 @@
 	}
 }
 
-@keyframes animateImage {
-	from {
-		opacity: 0.7;
-		clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-		filter: brightness(50%);
-	}
-	to {
-		opacity: 1;
-		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-		filter: brightness(100%);
-	}
-}
-@keyframes animateDetails {
-	from {
-		background: $secondary-color;
-		clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-	}
-	to {
-		background: $primary-color;
-		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-	}
-}
+// @keyframes animateImage {
+// 	from {
+// 		opacity: 0.7;
+// 		clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+// 		filter: brightness(50%);
+// 	}
+// 	to {
+// 		opacity: 1;
+// 		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+// 		filter: brightness(100%);
+// 	}
+// }
+// @keyframes animateDetails {
+// 	from {
+// 		background: $secondary-color;
+// 		clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+// 	}
+// 	to {
+// 		background: $primary-color;
+// 		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+// 	}
+// }
